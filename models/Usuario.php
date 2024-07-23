@@ -101,14 +101,23 @@
 
   }
 
-  public function get_usuario_by_id($user_id){
+  // public function get_usuario_by_id($user_id){
+  //   $conectar = parent::conexion();
+  //   parent::set_names();
+  //   $sql = " SELECT * FROM tm_usuario where user_id=?";
+  //   $sql=$conectar->prepare($sql);
+  //   $sql->bindValue(1, $user_id);
+  //   return $resultado = $sql->fetchAll();
+  // }
+  public function get_usuario_by_id($user_id) {
     $conectar = parent::conexion();
     parent::set_names();
-    $sql = " SELECT * FROM tm_usuario where user_id=? ";
-    $sql=$conectar->prepare($sql);
+    $sql = "SELECT * FROM tm_usuario WHERE user_id=?";
+    $sql = $conectar->prepare($sql);
     $sql->bindValue(1, $user_id);
-    return $resultado = $sql->fetchAll();
-  }
+    $sql->execute(); // Falta ejecutar la consulta
+    return $sql->fetchAll(); // Recupera los resultados de la consulta
+}
 
 
   }
